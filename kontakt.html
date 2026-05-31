@@ -39,23 +39,37 @@
   <div class="content">
     <div class="kontakt-grid">
       <div class="kontakt-form">
-        <h3>Nachricht senden</h3>
-        <div class="form-group"><label>Ihr Name</label><input type="text" placeholder="Max Mustermann"></div>
-        <div class="form-group"><label>E-Mail-Adresse</label><input type="email" placeholder="max@example.de"></div>
-        <div class="form-group"><label>Telefon (optional)</label><input type="tel" placeholder="0345 / …"></div>
-        <div class="form-group">
-          <label>Betreff</label>
-          <select>
-            <option>Interesse an Parzelle</option>
-            <option>Warteliste eintragen</option>
-            <option>Allgemeine Anfrage</option>
-            <option>Mitgliedschaft</option>
-            <option>Sonstiges</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Ihre Nachricht</label><textarea placeholder="Schreiben Sie uns Ihr Anliegen…"></textarea></div>
-        <button class="form-submit" onclick="alert('Vielen Dank! Ihre Nachricht wurde übermittelt.')">Nachricht absenden →</button>
-      </div>
+  <h3><brtsckft>Nachricht senden</brtsckft></h3>
+  <form action="https://formspree.io/f/mykvaokr" method="POST">
+    <div class="form-group">
+      <label><brtsckft>Ihr Name</brtsckft></label>
+      <input type="text" name="name" placeholder="Max Mustermann" required>
+    </div>
+    <div class="form-group">
+      <label><brtsckft>E-Mail-Adresse</brtsckft></label>
+      <input type="email" name="email" placeholder="max@example.de" required>
+    </div>
+    <div class="form-group">
+      <label><brtsckft>Telefon (optional)</brtsckft></label>
+      <input type="tel" name="telefon" placeholder="0345 / …">
+    </div>
+    <div class="form-group">
+      <label><brtsckft>Betreff</brtsckft></label>
+      <select name="betreff">
+        <option><brtsckft>Interesse an Parzelle</brtsckft></option>
+        <option><brtsckft>Warteliste eintragen</brtsckft></option>
+        <option><brtsckft>Allgemeine Anfrage</brtsckft></option>
+        <option><brtsckft>Mitgliedschaft</brtsckft></option>
+        <option><brtsckft>Sonstiges</brtsckft></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label><brtsckft>Ihre Nachricht</brtsckft></label>
+      <textarea name="message" placeholder="Schreiben Sie uns Ihr Anliegen…" required></textarea>
+    </div>
+    <button type="submit" class="form-submit"><brtsckft>Nachricht absenden →</brtsckft></button>
+  </form>
+</div>
       <div class="kontakt-info">
         <div class="kontakt-box">
           <span class="k-icon">📬</span>

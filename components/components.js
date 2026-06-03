@@ -6,7 +6,7 @@
   var scripts = document.getElementsByTagName('script');
   var thisScript = scripts[scripts.length - 1];
   var scriptSrc = thisScript.src; // e.g. https://example.com/components/components.js
-  var root = scriptSrc.substring(0, scriptSrc.lastIndexOf('/components/') + 1);
+  var root = scriptSrc.substring(0, scriptSrc.lastIndexOf('/') + 1);
   // root = https://example.com/  (always ends with /)
 
   function loadComponent(id, url) {
@@ -29,8 +29,8 @@
   }
 
   Promise.all([
-    loadComponent('nav-placeholder',    root + 'components/nav.html'),
-    loadComponent('footer-placeholder', root + 'components/footer.html'),
+    loadComponent('nav-placeholder',    root + 'nav.html'),
+    loadComponent('footer-placeholder', root + 'footer.html'),
   ]).then(function () {
     // Mark active nav link after both components are injected
     var path = location.pathname.replace(/\/$/, '') || '/aktuelles.html';

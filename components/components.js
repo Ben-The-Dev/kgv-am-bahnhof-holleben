@@ -8,6 +8,9 @@
   var scriptSrc = thisScript.src; // e.g. https://example.com/components/components.js
   var root = scriptSrc.substring(0, scriptSrc.lastIndexOf('/') + 1);
   // root = https://example.com/  (always ends with /)
+  var base = document.createElement('base');
+  base.href = '/kgv-am-bahnhof-holleben/';
+  document.head.insertBefore(base, document.head.firstChild);
 
   function loadComponent(id, url) {
     return fetch(url)

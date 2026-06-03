@@ -1,13 +1,19 @@
-(function () {
-  // Set base href first
-  var base = document.createElement('base');
-  base.href = location.hostname === 'localhost' 
-    ? '/kgv-am-bahnhof-holleben/'
-    : '/kgv-am-bahnhof-holleben/';
-  document.head.insertBefore(base, document.head.firstChild);
+// Loads shared nav and footer, then marks the active nav link.
+// Place this <script> tag at the BOTTOM of <body>, after the placeholders.
 
-  // Always fetch components relative to repo root
-  var root = base.href + 'components/';
+(function () {
+  var base = document.createElement('base');
+  base.href = '/kgv-am-bahnhof-holleben/';
+  document.head.insertBefore(base, document.head.firstChild);
+  // Determine base URL robustly — works on file://, http://, and subdirectories
+  var scripts = document.getElementsByTagName('script');
+  var thisScript = scripts[scripts.length - 1];
+  var scriptSrc = thisScript.src; // e.g. https://example.com/components/components.js
+  var root = scriptSrc.substring(0, scriptSrc.lastIndexOf('/') + 1);
+  // root = https://example.com/  (always ends with /)
+  var base = document.createElement('base');
+  base.href = '/kgv-am-bahnhof-holleben/';
+  document.head.insertBefore(base, document.head.firstChild);
 
   function loadComponent(id, url) {
     return fetch(url)
@@ -32,10 +38,11 @@
     loadComponent('nav-placeholder',    root + 'nav.html'),
     loadComponent('footer-placeholder', root + 'footer.html'),
   ]).then(function () {
-    var path = location.pathname.replace(/\/$/, '') || '/kgv-am-bahnhof-holleben/aktuelles.html';
+    // Mark active nav link after both components are injected
+    var path = location.pathname.replace(/\/$/, '') || '/aktuelles.html';
     document.querySelectorAll('.nav-links a').forEach(function (a) {
       var href = new URL(a.href).pathname;
-      if (href === path || (path.startsWith('/kgv-am-bahnhof-holleben/parzellen') && href.includes('/parzellen'))) {
+      if (href === path || (path.startsWith('/parzellen') && href.includes('/parzellen'))) {
         a.classList.add('active');
       }
     });

@@ -254,7 +254,7 @@ nav {
 }
 
 .stat-num {
-  font-family: 'Playfair Display', serif;
+  font-family: Roboto, sans-serif !important;
   font-size: 2.2rem;
   color: var(--accent);
   font-weight: 700;
